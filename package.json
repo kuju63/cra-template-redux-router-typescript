@@ -1,10 +1,10 @@
 {
-  "name": "cra-template-redux-router-ts",
+  "name": "cra-template-redux-router-typescript",
   "version": "0.0.1",
   "description": "create-react-app template using redux and React Router, TypeScript",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kuju63/cra-template-redux-router-ts.git"
+    "url": "git+https://github.com/kuju63/cra-template-redux-router-typescript.git"
   },
   "keywords": [
     "react",
@@ -19,9 +19,9 @@
     "node": ">=14"
   },
   "bugs": {
-    "url": "https://github.com/kuju63/cra-template-redux-router-ts/issues"
+    "url": "https://github.com/kuju63/cra-template-redux-router-typescript/issues"
   },
-  "homepage": "https://github.com/kuju63/cra-template-redux-router-ts#readme",
+  "homepage": "https://github.com/kuju63/cra-template-redux-router-typescript#readme",
   "files": [
     "template",
     "template.json",
