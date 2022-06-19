@@ -1,22 +1,37 @@
 name: "Publish to npm"
 
 on:
-  release:
-    types:
-      - "published"
-  
+  push:
+    branches:
+      - "main"
 
 jobs:
   publish-npm:
+    name: "Bump version on main"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm version from-git
-      - run: npm publish
+      - name: bump version
+        id: version-bump
+        uses: "phips28/gh-action-bump-version@9.0.20"
+        with:
+          tag-prefix: "v"
+          commit-message: "ci: bumps version to {{version}} [skip ci]"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: publish package to npm
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version-bump.outputs.newTag }}
+          generate_release_notes: true
