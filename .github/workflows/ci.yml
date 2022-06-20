@@ -1,0 +1,25 @@
+name: "CI"
+
+on:
+  pull_request:
+
+jobs:
+  ci:
+    name: "Test create react app"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          node-version: 16
+      - name: "Create react app"
+        run: |
+          yes | npx create-react-app /tmp/my-app --template file:../cra-template-redux-router-typescript
+      - name: "Test react app"
+        working-directory: /tmp/my-app
+        run: |
+          npm i && npm test
+      - name: "Build asset"
+        working-directory: /tmp/my-app
+        run: |
+          npm run build
