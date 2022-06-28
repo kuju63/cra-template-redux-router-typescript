@@ -1,6 +1,6 @@
 {
   "name": "cra-template-redux-router-typescript",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "create-react-app template using redux and React Router, TypeScript",
   "repository": {
     "type": "git",
